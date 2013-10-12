@@ -1,0 +1,205 @@
+### Intro and credits:
+Hello, and thank you for using the Miriani soundpack for Tintin++ by Jason. This
+pack was originally started almost 2 years go, but due to OOC reasons, I had to
+stop playing mostly, and also stopped work on this pack. In the time I had to
+give up work on this pack, Miriani 1.0 for Tintin was released by another author. I wish to make
+it known, that this pack, and Miriani1.0 are not the same, nor is this an
+extension of that pack. I also wish to take no credit away from the author of
+version 1.0, or the one hosting it, but as it isn't supported anymore, I figured
+I would pick up support.
+
+Sounds from this soundpack came from various sources, including a few from older packs,
+a friend who worked on one of of the originals for MT or Mush, I can't remember
+which now, and also several sound effect libraries.
+
+###Liability and License:
+This soundpack is covered by the GPL license, and basically states:
+You can copy, modify and redistribute any or all of this pack,as long as you
+include either the original or a link to the original, as well as credit to the
+original auther ,as well as any previous authers. Saying that, I make no other
+warranty, guarantee, and no claims to any liability for the use of this pack,
+especially against the claim of losing sleep, friends, relationships, or jobs.
+
+### Contacting the author:
+If you have any questions, comments, suggestions, or anything of the sort, you
+can post on the "OOC>Soundpacks" message boards, but I would prefer an email, as
+I watch that more. I can be contacted at:
+
+soundpacks@mail.com
+
+As this isn't the only game I am working on soundpacks for please follow the
+format below in the subject line:
+tintin miriani <bug|comment|request>
+with only one of <bug|comment|request> in the line, as well as the rest in the
+message body. Please also, include all you can if reporting a bug, including
+where it happened, and conditions, and also for a request feature, if it's
+replacing text with sounds, please give me the text lines you wish to be replaced
+with sounds, or any other requests. 
+NOTE:
+I absolutely refuse to build you, or help you build any scripts that help bot,
+grind, or otherwise make your player advance with little to no interaction. The
+rest of us had to grind away manually, puttin work into our characters, so you
+must too. I also refuse to put any other triggers into my packs that break
+policies. This means things like autolocking, lock and fire triggers, or hotkeys for
+shooting, among others. Certain things, like the "sc" for scan alias, or the
+secondary keys for movement and such were okay specifically by a host.
+
+### Setup and use:
+This pack as mentioned above is for the Tintin++ client. I wrote most of this
+using Ubuntu, and then arch, so I know they work on that. It should also work on
+the Macintosh command line, but installation of everything for that is beyond
+this README. Tintin++ is either available in most distriutions' repos, or as
+in the case of Archlinux, the AUR IArch User Reposityry). Packages you'll need:
+Tintin++
+Sox with wavpack support
+
+### Running the pack:
+1. If you're reading this, you obtained the pack, either as a direct download
+from the GitHub website, or using "git clone." 
+2. In the main folder called "miriani" type "tt++ miriani.tin" without the
+quotes.
+3. That should load everything, and you are brought to your login name, after
+the mesages that Tintin spit out.
+
+Again, this should be able to be run on Macintosh, but you would have to
+read/google how to install tintin and sox yourself. This should also be able to
+be used on any *nix system where you can install/compile Tintin++ and Sox,
+including Linux, BSD, and Solaris.
+
+### Soundpack Contents:
+The folder contains 3 subfolders:
+backups - Where a backup of an unmodified "data.tin" and "miriani.tin" file
+reside.
+logs - where your logs go when you start to log, in the format of
+Year-month-day.txt.
+sounds - where *all* the packs sounds live. This is where you can swap/replace
+sounds if you so wish.
+There are at this time, also 4 files there. 
+data.tin - the game's stored data from session to session such as volume and
+other variables.
+miriani.tin - the main data file for the game written by me.
+README - this file
+user.tin - a file saved for any user specific work they wish to add. This file
+will never be updated by me.
+
+### Updating the pack:
+At this time, there are only 2 ways to update. A message will be posted on the
+"OOC>soundpacks" board announcing any update, until I write in an autoupdater.
+The first way is to go directly to the GitCore site and download the pack again
+in a zipped format, and follow the instructions you previously used. The second,
+is while in the miriani folder you run the pack from, use the command:
+git pull
+and that will pull any updates, automatically adding files and replacing old
+ones with newer ones if needed.
+Note:
+If you wish to add your own custom triggers and such, please use the file
+"user.tin" as I will not be updating that, so it should never be overwritten. I
+would also suggest putting a copy of user.tin in the backups foer as well each
+time you modify it, deleting the previous version.
+
+Remeber, this soundpack is a work in progress, and this release is not a final
+product of any tipe. I work on this in my spare time, when I can, and will push
+updates if bugs are reported, or requests made, at early as possible. I can't
+promise updates and such will be available instantly. Thank you for
+understanding.
+
+### Command help:
+There are a few commands, be they aliases, macros, or hot key combinations I have
+included, and will put in more at a later point as well as work progresses. I
+will also be adding a file that can be called up in game, for soundpack help
+detailing the same, at a later point.
+
+## Function keys:
+There is a list of commands associated with the Function keys (F1 to F12). They
+are as follows currently:
+F1 - Toggles secondary movement mode between walk and fly (explained more
+later). Default is in walk.
+F2 - Combat Focus: 
+Toggles between on or off. When on you will see the coords
+followed by the ship when you type focus instead of ship then coords.
+F3 - Combat Scanning:
+Togles between on and off. When on, all you see during a scan is the ship,
+followed by the coords underneath. Use the following keys to access all other
+information:
+#Macros - Keys used together:
+control + h - hull damage
+control + k _component damage
+control + o - occupants
+control + u - distance
+#aliases - type, then hit enter:
+ses -show enemy ship, ship name, and alliance
+swe - weapon state
+spo - powere state
+sca - cargo
+F4 - Logging:
+Toggles logging on and off. Logs stored in logs subfolder of directory in the
+format of "year-month-day.txt."
+F9 - Volume status:
+Shows the current volume. Shows in the format of 0.x signifying a percentage.
+Example 0.20 would be at 20 percent volume. You can go above 1.0 (100 percent)
+but I wouldn't advise it. I also wouldn't advise goign or trying to go below
+0.0 (0 percent), as that might break something on your system, and I am not responsible for
+that.
+F10 - Mute/unmute:
+Toggles soundpack state - muted or unmuted. Simple enough.
+F11 - Volume down:
+Lowers the volume by 0.05, or 5 percent. Again, I am not responsible if you
+attempt to lower it below 0.0 or 0 percent.
+F12 - Volume up:
+Raises the volume by 0.05, or 5 percent. Again, I am not responsible if you
+raise it above 100 percent.
+
+F5 to F8 will eventually be used for background sound control. I plan on
+eventually background looping most,if not the entire game. F9 may aso be changed
+at a later point, as calling your volume isn't all that importan, and can be
+aliased instead, saving macro keys for more important use.
+
+## Secondary keys - Walking and flying:
+As stated above, the F1 key toggles movement mode for secondary keys. When you
+press F1, it will change the mode, as well as tell you which mode you are now
+in. To use the keys, press Alt and the key specified. 
+
+Key - flight - walking
+ U    7         northwest
+ I    8         north
+ O    9         northeast
+ J    4         west
+ K    5         Out
+ L    6         east
+ M    1         southwest
+ ,    2         south
+ .    3         southeast
+ P    +         up
+ ;    -         down
+
+You do not need to try to capitalize it. The lower case is what actually works.
+So for example, when walking, if you want to head down then southwest, it would
+be:
+Alt ;, Alt m
+and for flying to fly east, then upwards and north (op north up in the same time
+as well:
+Alt l, Alt p, Alt i
+
+## Other functions:
+There are a few other functions to explain hereas well.
+Control + q - quit and save:
+Puts your char to sleep, saves all your current variables, and exits Tintin++
+completely, putting you back in the command prompt for your system.
+Control + T - Terminal or console mode:
+Toggles your soundpack to use terminal mode, or console mode. It will state
+which you are in when you log in, as well as when you use this toggle. The
+reasoning is this: soundpacks seem to work differently in Linux, dependant on if
+you run them in the terminal (the desktop's command line) or in a console (full command
+line, no desktop). When in console mode, the pack puts a split in, so your
+typing doesn't get jumbled in with the incoming text, and when put into terminal
+mode, it unsplits your panes (sorry no way around this), as otherwiseit doesn't
+read right, and also puts a space before the first character of *every* line, so
+you don't get chopped words. The only badnote on this, is thatat times, when in
+the console, you might have to hit the key to toggle it out of console mode,
+into terminal mode, then again back to console mode (Control + t twice) or it repeats in the console as well. Sorry all,
+I'm working on this.
+Alt + 1 - pa repeat:
+Repeats the last message over the PA. I'm working on making it work for the last
+10 messages. Also going to add in the same command set, probably control +
+numbers, for recalling the last say messages. Good when you're shopping, and
+someone talks to you.
