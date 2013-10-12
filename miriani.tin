@@ -179,53 +179,6 @@ play Music/Disconnect.wav;
 #elseif {"$movemode" == "walk"} {d}
 }
 
-#NOP airlock
-#action {The hatch acknowledges your key and unlocks, allowing you to %1 through.} 
-{
-play Ship/Misc/AirlockEnter.wav;
-#line gag
-}
-#action {You %1 through the unlocked hatch of %2} 
-{
-play Ship/Misc/AirlockEnter.wav;
-#line gag
-}
-#action {You %1 through the broken hatch of %2} 
-{
-play Ship/Misc/AirlockEnter.wav;
-#line gag
-}
-#action {You follow %1 into the ship%2} 
-{
-play Ship/Misc/AirlockEnter.wav;
-#line gag
-}
-#action {%1 drags you into the ship%2} 
-{
-play Ship/Misc/AirlockEnter.wav;
-#line gag
-}
-#action {%1 arrives from outside.} 
-{
-play Ship/Misc/AirlockEnter.wav
-}
-#action {%1 {exits|exit} the ship.} 
-{
-play Ship/Misc/AirlockExit.wav
-}
-#action {%1 floats outside into space.} 
-{
-play Ship/Misc/AirlockExit.wav
-}
-#action {%1 attempts to board %2, but is turned away by the locked hatch.} 
-{
-play General/Misc/CantGo@math{1d5}.wav
-}
-#action {You are turned away by the locked hatch of %1.} 
-{
-play General/Misc/CantGo@math{1d5}.wav
-}
-
 #NOP archaeology
 #action {You press a small button on the side of a level %1 archaeological dig site scanner and begin directing it toward several likely locations.} 
 {
@@ -1172,7 +1125,7 @@ play Ship/Misc/AirlockEnter.wav;
 {
 play Ship/Misc/AirlockEnter.wav
 }
-#action {%1 exits the ship.} 
+#action {%1 {exits|exit} the ship.} 
 {
 play Ship/Misc/AirlockExit.wav
 }
