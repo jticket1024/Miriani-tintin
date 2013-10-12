@@ -50,6 +50,7 @@
 #EVENT {SESSION CONNECTED}
 {
 #class data read data.tin;
+#read user.tin;
 play Music/starter@math{1d11}.wav
 } 
 #session miriani toastsoft.net 1234
@@ -106,20 +107,8 @@ play Music/Disconnect.wav;
 }
 
 #NOP aliases and macros
-#alias {ea1} {ent atmos1}
-#alias {ea2} {ent atmos2}
-#alias {bb} {beacon %1}
-#alias {bn} {beacons near}
-#alias {br} {beacons range}
-#alias {dk} {drink %1}
-#alias {sh} {shoot %1}
-#alias {c} {coords}
-#alias {gc} {galcoords}
-#alias {fo} {focus}
-#alias {unf} {unfocus}
 #alias {sc} {scan}
-#macro {\ef} {focus}
-#macro {\es} {scan}
+
 #NOP movement macros
 #macro {\e[[A}
 {
@@ -190,53 +179,6 @@ play Music/Disconnect.wav;
 #elseif {"$movemode" == "walk"} {d}
 }
 
-#NOP airlock
-#action {The hatch acknowledges your key and unlocks, allowing you to %1 through.} 
-{
-play Ship/Misc/AirlockEnter.wav;
-#line gag
-}
-#action {You %1 through the unlocked hatch of %2} 
-{
-play Ship/Misc/AirlockEnter.wav;
-#line gag
-}
-#action {You %1 through the broken hatch of %2} 
-{
-play Ship/Misc/AirlockEnter.wav;
-#line gag
-}
-#action {You follow %1 into the ship%2} 
-{
-play Ship/Misc/AirlockEnter.wav;
-#line gag
-}
-#action {%1 drags you into the ship%2} 
-{
-play Ship/Misc/AirlockEnter.wav;
-#line gag
-}
-#action {%1 arrives from outside.} 
-{
-play Ship/Misc/AirlockEnter.wav
-}
-#action {%1 {exits|exit} the ship.} 
-{
-play Ship/Misc/AirlockExit.wav
-}
-#action {%1 floats outside into space.} 
-{
-play Ship/Misc/AirlockExit.wav
-}
-#action {%1 attempts to board %2, but is turned away by the locked hatch.} 
-{
-play General/Misc/CantGo@math{1d5}.wav
-}
-#action {You are turned away by the locked hatch of %1.} 
-{
-play General/Misc/CantGo@math{1d5}.wav
-}
-
 #NOP archaeology
 #action {You press a small button on the side of a level %1 archaeological dig site scanner and begin directing it toward several likely locations.} 
 {
@@ -301,15 +243,27 @@ play General/Asteroid/KitRetrieve.wav;
 #line gag
 }
 
-#NOP atmos salvaging
-#action {You are suddenly pressed against your seat as the vehicle is catapulted out of the docking bay.} 
+#NOP atmo salvaging
+#gag {You are suddenly pressed against your seat as the vehicle is catapulted out of the docking bay.} 
+#gag {"Vehicle catapult active. Prepare for extreme acceleration."}
+#action {You carefully pilot the vehicle into a small chamber above the docking bay.}
 {
-play salvagelaunch.wav;
+play General/Atmo/SalvageLaunch.wav;
 #line gag
 } 
 #action {You feel the pull of acceleration as the ship begins ascending through the planet's atmosphere.} 
 {
-play General/Amo/salvagemove.wav;
+play General/Atmo/salvagemove.wav;
+#line gag
+}
+#action {The ship comes to a halt in the planet's atmosphere.}
+{
+play General/Atmo/salvagestop.wav;
+#line gag
+}
+#action {The vehicle manages to break free from the pocket of wind and stabilize its course.}
+{
+play General/Atmo/salvagestop.wav;
 #line gag
 }
 #action {The pull of acceleration eases off as the ship ceases its ascent.} 
@@ -319,45 +273,61 @@ play General/Atmo/salvagestop.wav;
 }
 #action {You feel the pull of acceleration as the ship begins descending through the planet's atmosphere.} 
 {
-play salvagemove.wav;
+play General/Atmo/salvagemove.wav;
 #line gag
 }
 #action {The pull of acceleration eases off as the ship ceases its descent.} 
 {
-play salvagestop.wav;
+play General/Atmo/salvagestop.wav;
 #line gag
 }
 #action {You feel the pull of acceleration as the craft navigates through the atmosphere.} 
 {
-play salvagemove.wav;
+play General/Atmo/salvagemove.wav;
 #line gag
 }
 #action {The pull of acceleration eases off as the craft completes its maneuvering.} 
 {
-play salvagestop.wav;
+play General/Atmo/salvagestop.wav;
 #line gag
 }
 #action {You hear the sounds of the atmospheric scoop activating.} 
 {
-play salvagescoop.wav;
+play General/Atmo/salvagescoop.wav;
 #line gag
 }
-/*#action {The computer announces, "Warning, avian lifeform in processing chamber. Expelling..."} 
+#action {The computer announces, "Warning, avian lifeform in processing chamber. Expelling..."} 
 {
-play salvagelifeform1.wav;
+play General/Atmo/SalvageLifeform@math{1d2}.wav;
 #line gag
-}*/
-#action {%1You open the hatch of a standard atmospheric salvager%2} 
+}
+/*#action {The computer announces:"Processing complete. One unit of %1has been secured."}
 {
-play Ship/Misc/HatchEnter.wav
+*/
+
+#action {%1You open the hatch of a standard atmospheric salvager called%2 and climb inside%3} 
+{
+play Ship/Misc/HatchEnter.wav;
+#line gag
 }
 #action {%1You climb out of the vehicle%2} 
 {
-play Ship/Misc/HatchExit.wav
+play Ship/Misc/HatchExit.wav;
+#line gag
 }
 #action {You hear a sharp whine as the vehicle accelerates through the%1} 
 {
-play Ship/Misc/Descent.wav;
+play General/Atmo/SalvageDescent.wav;
+#line gag
+}
+#action {The vehicle carefully maneuvers into the docking bay.}
+{
+play General/Misc/SalvagerReturns.wav;
+#line gag
+}
+#action {You hear a gentle thud as the salvager sets down in the docking bay.}
+{
+play General/Misc/SalvagerLands.wav;
 #line gag
 }
 #action {A gust of atmospheric wind suddenly buffets the ship%1} 
@@ -1155,7 +1125,7 @@ play Ship/Misc/AirlockEnter.wav;
 {
 play Ship/Misc/AirlockEnter.wav
 }
-#action {%1 exits the ship.} 
+#action {%1 {exits|exit} the ship.} 
 {
 play Ship/Misc/AirlockExit.wav
 }
@@ -1168,12 +1138,8 @@ play Ship/Misc/AirlockExit.wav
 play Ship/Misc/Bell.wav;
 #line gag
 }
-action#{You press a large button marked CYCLE.}
-{
-play General/Misc/SBeep@math{1d15}.wav;
-#line gag
-}
-/*#action {The computer announces over your suit radio, "Beginning cycling."} 
+#gag {You press a large button marked CYCLE.}
+#action {The computer announces over your suit radio, "Beginning cycling."} 
 {
 play cyclestart.wav;
 play Ship/Comm/PA@math{1d9}.wav;
@@ -1185,7 +1151,7 @@ play Ship/Comm/PA@math{1d9}.wav;
 play Ship/Comm/PA@math{1d9}.wav;
 #showme {Cycling complete.};
 #line gag
-}*/
+}
 #action {A small light on the airlock control panel turns from %1 to %2.  Through your suit, you gradually begin to hear the hiss of air %3 the airlock.} 
 {
 play Ship/Misc/AirStart.wav;
@@ -1335,7 +1301,8 @@ play Music/@math{1d30}.wav;
 play Ship/Combat/YouHit@math{1d3}.wav;
 #line gag
 }
-/*#action {The computer announces, "%1 destroyed."} 
+#NOP ships?
+#action {The computer announces, "%1 destroyed."} 
 {
 #regexp {%1} {{debris|Debris}}
 {
@@ -1349,7 +1316,7 @@ play Ship/Combat/OtherDestroyed@math{1d8}.wav;
 #math {ehits} {$ehits + 1}
 };
 #line gag
-}*/
+}
 #action {Target:%1} 
 {
 play Ship/Combat/LockedOnOther.wav
@@ -1358,7 +1325,8 @@ play Ship/Combat/LockedOnOther.wav
 {
 play Ship/Combat/LockedOnYou.wav
 }
-/*#action {The computer announces, "%1has been destroyed."} 
+#NOP debris?
+#action {The computer announces, "%1has been destroyed."} 
 {
 play Ship/Combat/OtherDestroyed@math{1d8}.wav
 }
@@ -1371,7 +1339,7 @@ play Ship/Combat/OtherDestroyed@math{1d8}.wav
 play Ship/Computer/Keyboard@math{1d15}.wav;
 #showme {Turret%1locked on%2.};
 #line gag
-}*/
+}
 #action {%1has fired at%2.} 
 {
 play Ship/Combat/OtherFired@math{1d6}.wav
@@ -1408,7 +1376,7 @@ play Ship/Combat/Laser@math{1d15}.wav;
 play Ship/Combat/Cannon@math{1d8}.wav;
 #line gag
 }
-/*#action {The computer announces, "Hit on%1"} 
+#action {The computer announces, "Hit on%1"} 
 {
 play Ship/Combat/OtherHit@math{1d5}.wav;
 #math {ehits} {$ehits + 1};
@@ -1419,7 +1387,7 @@ play Ship/Combat/OtherHit@math{1d5}.wav;
 play Ship/Computer/Keyboard@math{1d15}.wav;
 #showme {Cannon%1locked on%2.};
 #line gag
-}*/
+}
 #action {You hear a gentle hum as the weapons power up.} 
 {
 play Ship/Combat/WeaponsOn.wav;
@@ -1569,12 +1537,12 @@ play Ship/Misc/EscapePodDescend.wav
 /*#action {With a final jolt, the pod completes its landing. As you depart, you notice an army of automated drones arrive to clear the spent pod away.}*/
 
 #NOP ship computer
-/*#action {The computer announces,%1} 
+#action {The computer announces,%1} 
 {
 play Ship/Computer/Announce@math{1d4}.wav;
 #showme {%1};
 #line gag
-}*/
+}
 #action {The computer reports %1}
 {
 play Ship/Computer/Announce@math{1d4}.wav;
@@ -1588,7 +1556,7 @@ play Ship/Computer/LRScan@math{1d4}.wav
 /*#action {The computer reports$1} 
 {
 play Ship/Computer/Report@math{1d4}.wav
-}
+}*/
 #action {The computer announces, "Scans reveal the debris to be a life form."} 
 {
 play Ship/Misc/SalvageLifeForm.wav;
@@ -1598,7 +1566,7 @@ play Ship/Misc/SalvageLifeForm.wav;
 #action {The computer announces, "NAVI was unable to continue due to sensor interference."} 
 {
 play Ship/Computer/Anomaly.wav
-}*/
+}
 #action {%1presses a button on a navigation console and examines the display.} 
 {
 play Ship/Computer/Keyboard@math{1d15}.wav
@@ -1643,10 +1611,10 @@ play Ship/Computer/Display.wav
 {
 play Ship/Computer/Display.wav
 }
-/*#action {The computer announces, "Mission objective has been completed in approximately%1. Return to base."} 
+#action {The computer announces, "Mission objective has been completed in approximately%1. Return to base."} 
 {
 play Music/@math{1d30}.wav
-}*/
+}
 #action {You press a button and quickly retrieve a printout of the ship's%1.} 
 {
 play Ship/Computer/Print.wav
@@ -1659,10 +1627,10 @@ play Ship/Computer/DamageReport.wav
 {
 play Ship/Computer/Display.wav
 }
-/*#action {The computer announces, "An artifact has been detected in the sector."} 
+#action {The computer announces, "An artifact has been detected in the sector."} 
 {
 play Ship/Computer/Artifact.wav
-}*/
+}
 #action {Current coordinates: %1} 
 {
 #showme {%1} ;
