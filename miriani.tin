@@ -1,7 +1,7 @@
 #NOP sound and math alias
 #alias {play %0.%1}
 {
-#system play -v $vol ./sounds/"%0.%1" -q &;
+#system play -v $vol ./sounds/"%0.%1" -q 2>/dev/null &;
 #gag {^[[0m#OK: EXECUTING %0}
 }
 #alias {{vol|volume} %1}
@@ -11,17 +11,17 @@
 }
 #macro {\e[20~}
 {
-	#showme {Sound volume is at $vol.}
+	#showme {Sound volume is at $vol\.}
 }
 #macro {\e[23~}
 {
 #math {vol} {$vol - .05};
-	#showme {Sound volume now at $vol.}
+	#showme {Sound volume now at $vol\.}
 }
 #macro {\e[24~}
 {
 #math {vol} {$vol + .05};
-	#showme {Sound volume now at $vol.}
+	#showme {Sound volume now at $vol\.}
 }
 #macro {\e[21~}
 {
@@ -34,12 +34,12 @@
 #elseif {"$vol" == "0"}
 {
 #variable {vol} {$oldvol};
-	#showme {Your soundpack has been unmuted. Sound volume now at $vol.}
+	#showme {Your soundpack has been unmuted. Sound volume now at $vol\.}
 }
 }
 #alias {vol?} 
 {
-#showme {Your volume is $vol.}
+#showme {Your volume is $vol\.}
 }
 #function {math}
 {
@@ -110,7 +110,7 @@ play Music/Disconnect.wav;
 #alias {sc} {scan}
 
 #NOP movement macros
-#macro {\e[[A}
+#macro {\eOP}
 {
 #if {"$movemode" == "walk"}
 {
@@ -1170,7 +1170,7 @@ play Music/@math{1d30}.wav;
 #gag {Some lovely elevator music abruptly stops playing as the airlock ceases cycling%1}
 
 #NOP ship scanning
-#macro {\e[[C}
+#macro {\eOR}
 {
 #if {"$cfoc" == "off"}
 {
@@ -1191,7 +1191,7 @@ play Music/@math{1d30}.wav;
 #line gag
 }
 }
-	#macro {\e[[B}
+	#macro {\eOQ}
 	{
 	#if {"$cscan" == "off"}
 {
@@ -2054,7 +2054,7 @@ play Ship/Move/EngineHum.wav;
  
 #alias {bgvol?} 
 {
-#showme {Your room volume is $bgvol.}
+#showme {Your room volume is $bgvol\.}
 }
 #ALIAS {bgon}
 {
@@ -2454,7 +2454,7 @@ play General/Socials/cackle.wav
 #action {*You suddenly feel a mighty tug on the end of your line.*} {play {c:/program files/vipmud/miriani/sounds/fishreel.wav */
 
 #NOP logging
-#macro {\e[[D}
+#macro {\eOS}
 {
 #if {"$logging" == "off"}
 {
