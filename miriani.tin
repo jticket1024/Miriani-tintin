@@ -46,6 +46,14 @@
     #math result {%0}
 }
 
+#function {intmath}
+{
+#nop for the macs among us. #math returns floats, even if it doesn't need to. I.E. 12.00
+#math result %0
+#format {result} {%d} {%1}
+}
+
+#function {int} {#format {result} {%d} {%1}}
 #NOP connection and settings
 #EVENT {SESSION CONNECTED}
 {
