@@ -409,7 +409,7 @@ play General/Device/CameraFeed.wav;
 }
 #action {[From Outside] You notice a bright flash of light%1a starship must be coming in%2}
 {
-play Ship/Move/OtherLanding@math[1d3].wav;
+play Ship/Move/OtherLanding@intmath{1d3}.wav;
 #line gag
 }
 #action {[From Outside] A loud clicking is followed by the clatter of an empty cartridge to the floor.}
@@ -2105,7 +2105,7 @@ play Ship/Move/EngineHum.wav;
 {
 #if {"$socials" == "true"}
 {
-play General/Socials/Punch@math(1d20).wav
+play General/Socials/Punch@intmath{1d20}.wav
 }
 }
 #action {%1 suddenly punches you in the back of the head.} 
